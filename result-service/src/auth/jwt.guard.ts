@@ -18,7 +18,7 @@ export class JwtAuthGuard implements CanActivate {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/user/validate', { token });
+      const response = await axios.post('http://127.0.0.1:3000/user/validate', { token });
       request.user = response.data; // Attach user data to the request object
       return true;
     } catch (err) {

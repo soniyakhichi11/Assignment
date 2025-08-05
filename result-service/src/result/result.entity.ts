@@ -12,9 +12,6 @@ export class Result {
   studentName: string;
 
   @Column()
-  subject: string;
-
-  @Column()
   marks: number;
 
   @Column()

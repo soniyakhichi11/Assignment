@@ -11,12 +11,20 @@ export class RabbitmqService {
   options: {
     urls: [process.env.RABBITMQ_URI],
     queue: 'result_queue',
-    queueOptions: { durable: false },
+    queueOptions: { durable: true },
+    exchange:'queue_exchange',
+    exchangeType:'direct',
+     routingKey:'result_created',
   },
 } as ClientOptions);
   }
 
   async sendResultNotification(data: any) {
-    return this.client.emit('result_created', data).toPromise();
+    // const payload={
+    //   pattern:'result_created',
+    //   data
+    // };
+    console.log('Emitting result_created event:', data);
+    this.client.emit('result_created', data);
   }
 }

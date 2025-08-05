@@ -1,11 +1,15 @@
+import { UserRole } from 'src/common/user-role.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-export type UserRole = 'student' | 'moderator';
+
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({unique:true,nullable:true})
+  userId:number;
 
   @Column()
   name: string;
