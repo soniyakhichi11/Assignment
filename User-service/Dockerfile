@@ -20,9 +20,11 @@ RUN npm run build
 FROM node:18-alpine AS production
 
 WORKDIR /app
+CMD ["ls"]
 
 COPY --from=builder package*.json ./
-Run npm ci --only=production
+RUN npm install --omit=dev
+
 COPY --from=builder /app/dist ./dist
 
 # Expose the port (corrected casing and port number)

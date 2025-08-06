@@ -37,7 +37,7 @@ import { AuthModule } from './auth/auth.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST || '127.0.0.1',
+      host: 'localhost',
       port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : undefined,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD, // ⚠️ string required
